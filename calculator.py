@@ -8,6 +8,9 @@ def solveEquation(a,b,m):
     #recebe uma equação na forma a*x ≡ b (mod m)
     #retorna y em x ≡ y (mod m)
     #ou -1 se não houver solução
+    
+    if m<=0 : return -1
+    
     a = a%m
     b = b%m
 
@@ -39,13 +42,13 @@ def bezout(a,b):
 def solveTCR(equations):
     #recebe uma lista de listas, no formato [[a,b,m],[a,b,m],...]
     #em que cada lista informa ax ≡ b (mod m)
-    # retorna a solução para o TCR no formato M,x,[[b,c,n,d],[b,c,n,d]]
-    #em que x é a resposta e, [b,c,n,d] são, a congruência canônica de x, e os valores para o cálculo do TCR, para cada equação
+    # retorna a solução para o TCR no formato M,x,[[c,n,d],[c,n,d]]
+    #em que x é a resposta e, [c,n,d] são, a congruência canônica de x, e os valores para o cálculo do TCR, para cada equação
     
     numEq = len(equations)
-    M = 1
+    mTotal = 1
     mdcTotal = 0
-    ret = [[0]*4]*numEq
+    ret = [[0]*3]*numEq
     
     #equações na forma [[a,m],...]
     #na forma x ≡ a (mod m)
@@ -53,20 +56,25 @@ def solveTCR(equations):
     
     for i in range(numEq):
         a,b,m = equations[i]
-        canonicos[i] = [solveEquation(a,b,m),a]
+        canonicos[i] = [solveEquation(a,b,m),m]
         if canonicos[i][0] == -1 : return "A equação " + (i+1) + " não tem forma canônica!"
-        M*= m
+        mTotal*= m
         mdcTotal = mdc(mdcTotal,equations[i][2])
     
     if mdcTotal != 1 : return "Os módulos não são coprimos entre si!"
     
+    x = 0
     for i in range(numEq):
         a,m = canonicos[i]
-    
-    
-    x = 0
-    return M,x,ret
+        c = a
+        n = mTotal//m
+        d = solveInverse(n,m)
+        ret[i] = [c,n,d]
+        x += c * n * d
+
+    x %= mTotal
+    return mTotal,x,ret
         
     
 
-print(solveTCR([[1,2,3],[1,2,3]]))
+print(solveTCR([[1,1,3],[1,2,4],[1,3,5]]))
