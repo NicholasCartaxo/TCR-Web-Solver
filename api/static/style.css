@@ -5,3 +5,26 @@
     padding-top: 50px;
 }
 
+#btn-custom {
+    background: linear-gradient(135deg, #575757, #505250); /* Degradê verde */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#btn-custom:hover {
+    background: linear-gradient(135deg, #575757, #505250);
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+#btn-custom:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
