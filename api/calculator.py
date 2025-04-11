@@ -58,10 +58,8 @@ def solveTCR(equations):
         a,b,m = equations[i]
         canonicos[i] = [solveEquation(a,b,m),m]
         if canonicos[i][0] == -1 : return "A equação " + (i+1) + " não tem forma canônica!"
+        if mdc(mTotal,m) != 1: return "Os módulos não são coprimos entre si dois a dois!"
         mTotal*= m
-        mdcTotal = mdc(mdcTotal,equations[i][2])
-    
-    if mdcTotal != 1 : return "Os módulos não são coprimos entre si!"
     
     x = 0
     for i in range(numEq):
