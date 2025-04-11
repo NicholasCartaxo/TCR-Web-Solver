@@ -74,7 +74,3 @@ def solveTCR(equations):
 
     x %= mTotal
     return mTotal,x,ret
-        
-    
-
-print(solveTCR([[1,1,3],[1,2,4],[1,3,5]]))
