@@ -47,7 +47,6 @@ def solveTCR(equations):
     
     numEq = len(equations)
     mTotal = 1
-    mdcTotal = 0
     ret = [[0]*3]*numEq
     
     #equações na forma [[a,m],...]
