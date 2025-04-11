@@ -20,7 +20,11 @@ def calcular():
 
     valoresParaCalculo = [[int(valores1[i]),int(valores2[i]),int(modulos[i])] for i in range(len(valores1))]
 
-    mTotal,x,resultados = solveTCR(valoresParaCalculo)  
+    resultado = solveTCR(valoresParaCalculo)
+    if type(resultado) is str:
+        return resultado
+    
+    mTotal,x,resultados = resultado
 
     s = "".join([f"c{i+1} = {resultados[i][0]}; N{i+1} = {resultados[i][1]}; d{i+1} = {resultados[i][2]}<br>" for i in range(len(resultados))])
     resultadoFormatado = f"x = {x} mod {mTotal}<br>" + s
