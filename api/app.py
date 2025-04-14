@@ -28,8 +28,9 @@ def calcular():
 
     s = "".join([f"c{i+1} = {resultados[i][0]}; N{i+1} = {resultados[i][1]}; d{i+1} = {resultados[i][2]}<br>" for i in range(len(resultados))])
     resultadoFormatado = f"x = {x} mod {mTotal}<br>" + s
-
-    return resultadoFormatado
+    print(valoresParaCalculo)
+    print(resultados)
+    return render_template('resultado.html', mTotal=mTotal, x=x, resultados = resultados, equacoes = valoresParaCalculo)
 
 if __name__ == '__main__':
     app.run(debug=True)
