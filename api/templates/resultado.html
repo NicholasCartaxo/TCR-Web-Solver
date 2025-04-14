@@ -10,32 +10,47 @@
 <body>
     <h1 id = "titulo">SOLUCIONANDO O TCR</h1>
     <div class="d-flex justify-content-center align-items-center vh-100" id="resposta-container">
-        <div id="M">
-            <p>M = Πm = {{mTotal}}</p>
-        </div>
-        <div>
-            <table class="table table-striped table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Equação</th>
-                        <th>Foma Canônica</th>
-                        <th>c = x(mod) m</th>
-                        <th>N = M/m</th>
-                        <th>d | Nd ≡ 1(mod m)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for i in range(resultados | length) %}
-                    <tr>
-                        <td>{{equacoes[i][0]}}x ≡ {{equacoes[i][1]}}(mod {{equacoes[i][2]}})</td>
-                        <td>x = {{resultados[i][0]}}(mod {{equacoes[i][2]}})</td>
-                        <td>c{{i+1}} = {{ resultados[i][0] }}</td>
-                        <td>N{{i+1}} = {{ resultados[i][1] }}</td>
-                        <td>d{{i+1}} = {{ resultados[i][2] }}</td>
-                    </tr>
+        <div class="row">
+            <div id="M" class="p-3">
+                <p>M = Πm = {{mTotal}}</p>
+            </div>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Equação</th>
+                            <th>Foma Canônica</th>
+                            <th>c = x(mod) m</th>
+                            <th>N = M/m</th>
+                            <th>d | Nd ≡ 1(mod m)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(resultados | length) %}
+                        <tr>
+                            <td>{{equacoes[i][0]}}x ≡ {{equacoes[i][1]}}(mod {{equacoes[i][2]}})</td>
+                            <td>x = {{resultados[i][0]}}(mod {{equacoes[i][2]}})</td>
+                            <td>c{{i+1}} = {{ resultados[i][0] }}</td>
+                            <td>N{{i+1}} = {{ resultados[i][1] }}</td>
+                            <td>d{{i+1}} = {{ resultados[i][2] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>Solução:</h3>
+                <div class="row">
+                    <p class="col bg-primary text-white p-3">X = c1 x N1 x d1</p>
+                    {% for i in range(1, (resultados | length)) %}
+                        <p class="col bg-primary text-white p-3">+ </p>    
+                        <p class="col bg-primary text-white p-3">C{{i+1}} x N{{i+1}} x d{{i+1}}</p>
                     {% endfor %}
-                </tbody>
-            </table>
+
+                    <p class="col bg-primary text-white p-3">(mod {{mTotal}})</p>
+                  </div>
+                  <p class="bg-primary text-white p-3">x = {{x}} (mod {{mTotal}}) </p>
+            </div>
         </div>
     </div>
 </body>
