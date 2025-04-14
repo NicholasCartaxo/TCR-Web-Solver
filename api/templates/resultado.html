@@ -20,14 +20,18 @@
                         <th>Equação</th>
                         <th>Foma Canônica</th>
                         <th>c = x(mod) m</th>
+                        <th>N = M/m</th>
+                        <th>d | Nd ≡ 1(mod m)</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for i in range(resultados | length) %}
                     <tr>
-                        <td>{{equacoes[i][0]}}x = {{equacoes[i][1]}}(mod {{equacoes[i][2]}})</td>
+                        <td>{{equacoes[i][0]}}x ≡ {{equacoes[i][1]}}(mod {{equacoes[i][2]}})</td>
                         <td>x = {{resultados[i][0]}}(mod {{equacoes[i][2]}})</td>
                         <td>c{{i+1}} = {{ resultados[i][0] }}</td>
+                        <td>N{{i+1}} = {{ resultados[i][1] }}</td>
+                        <td>d{{i+1}} = {{ resultados[i][2] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
