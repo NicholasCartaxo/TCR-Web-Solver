@@ -9,12 +9,11 @@ function adicionarEquacao() {
             <div class="d-flex align-items-center">
                 <input type="text" name="valor1[]" class="form-control p-1 text-center" style="width: 60px; height: 60px;">
                 <span style="font-size: 70px; margin-left: 10px;">x</span>
-                <span style="font-size: 70px; margin-left: 10px;">≡</span>
+                <span style="font-size: 70px; margin-left: 10px;">≅</span>
 
                 <input type="text" name="valor2[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
-                <span style="font-size: 70px; margin-left: 10px;">(mod</span>
+                <span style="font-size: 70px; margin-left: 10px;">mod</span>
                 <input type="text" name="modulo[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
-                <span style="font-size: 70px; margin-left: 10px;">)</span>
             </div>
         </div>
     `;

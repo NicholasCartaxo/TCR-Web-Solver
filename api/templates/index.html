@@ -11,37 +11,37 @@
 <body>
     <div class="background-overlay"></div>
     <div class="container-box">
-    <h1 id = "titulo">TCR-Web-Solver</h1>
-    <div id="barra-colorida">
-        <div class="segmento laranja"></div>
-        <div class="segmento verde"></div>
-        <div class="segmento azul"></div>
-    </div>
-    
-    <div class="conteudo">
-        <form method="POST" action="/calcular">
-            <div class="d-flex flex-column" id="equacoes-container">
-                <div class="d-flex justify-content-center">
-                    <div class="row">
-                        <div class="d-flex align-items-center">
-                            <input type="text" name="valor1[]" class="form-control p-1 text-center" style="width: 60px; height: 60px;">
-                            <span style="font-size: 70px; margin-left: 10px;">x</span>
-                            <span style="font-size: 70px; margin-left: 10px;">≅</span>
-            
-                            <input type="text" name="valor2[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
-                            <span style="font-size: 70px; margin-left: 10px;">mod</span>
-                            <input type="text" name="modulo[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
+        <h1 id = "titulo">TCR-Web-Solver</h1>
+        <div id="barra-colorida">
+            <div class="segmento laranja"></div>
+            <div class="segmento verde"></div>
+            <div class="segmento azul"></div>
+        </div>
+        
+        <div class="conteudo">
+            <form method="POST" action="/calcular">
+                <div class="d-flex flex-column" id="equacoes-container">
+                    <div class="d-flex justify-content-center">
+                        <div class="row">
+                            <div class="d-flex align-items-center">
+                                <input type="text" name="valor1[]" class="form-control p-1 text-center" style="width: 60px; height: 60px;">
+                                <span style="font-size: 70px; margin-left: 10px;">x</span>
+                                <span style="font-size: 70px; margin-left: 10px;">≅</span>
+                
+                                <input type="text" name="valor2[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
+                                <span style="font-size: 70px; margin-left: 10px;">mod</span>
+                                <input type="text" name="modulo[]" class="form-control p-1 text-center ms-4" style="width: 60px; height: 60px;">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button id="btn-custom" type="button" class="btn btn-secondary ms-2" onclick="adicionarEquacao()">Adicionar equação</button>
-                <button id="btn-custom" type="button" class="btn btn-danger ms-2" onclick="removerUltimaEquacao()">Remover equação</button>
-                <button id="btn-custom" type="submit" class="btn btn-custom ms-2">Calcular</button>
-            </div>
-        </form>
+                <div class="d-flex justify-content-center">
+                    <button id="btn-custom" type="button" class="btn btn-secondary ms-2" onclick="adicionarEquacao()">Adicionar equação</button>
+                    <button id="btn-custom" type="button" class="btn btn-danger ms-2" onclick="removerUltimaEquacao()">Remover equação</button>
+                    <button id="btn-custom" type="submit" class="btn btn-custom ms-2">Calcular</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 </html>
