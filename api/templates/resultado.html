@@ -5,9 +5,12 @@
     <title>Minha App Flask</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/resultado.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="background-overlay"></div>
+    <div class="container-box">
     <div class="conteudo">
         <h1 id="titulo">SOLUCIONANDO O TCR</h1>
         <div id="barra-colorida">
@@ -18,15 +21,15 @@
     </div>
     <div class="d-flex justify-content-center align-items-center vh-100" id="resposta-container">
         <div class="row">
-            <div id="M" class="p-3">
+            <div id="M" class="p-3 inner-box">
                 <p>M = Πm = 
                     {% for i in range(equacoes | length) %}
                         {{ equacoes[i][2] }}{% if not loop.last %} * {% endif %}
                     {% endfor %}
                     = {{mTotal}}</p>
             </div>
-            <div>
-                <table class="table table-striped table-bordered">
+            <div class="inner-box">
+                <table class="table2">
                     <thead class="table-dark">
                         <tr>
                             <th>Equação</th>
@@ -51,22 +54,22 @@
             </div>
             <div>
                 <h3>Solução:</h3>
-                <div class="row w-100 flex-nowrap mx-0 bg-primary">
-                    <p class="col-auto bg-primary text-white p-3">x</p>
-                    <p class="col-auto bg-primary text-white p-3">≡</p>
-                    <p class="col-auto bg-primary text-white p-3">Σ(ck*Nk*dk) (mod M)</p>
-                    <p class="col-auto bg-primary text-white p-3">=</p>
-
-                    {% for i in range(resultados | length) %}
-                    <p class="col-auto bg-primary text-white p-3">{{ resultados[i][0] }}*{{ resultados[i][1] }}*{{ resultados[i][2] }}</p>
-                    {% if not loop.last %}<p class="col-auto bg-primary text-white p-3"> + </p>{% endif %}
-                    {% endfor %}
-
-                    <p class="col-auto bg-primary text-white p-3">(mod {{mTotal}})</p>
+                <div class="solucao-box">
+                    <div class="linha-soma-unica">
+                        x ≡ Σ(cₖ·Nₖ·dₖ) (mod M) = 
+                        {% for i in range(resultados | length) %}
+                            {{ resultados[i][0] }}·{{ resultados[i][1] }}·{{ resultados[i][2] }}
+                            {% if not loop.last %}+{% endif %}
+                        {% endfor %}
+                        (mod {{mTotal}})
+                    </div>
+                    <div class="resultado-final">
+                        x ≡ {{x}} (mod {{mTotal}})
+                    </div>
                 </div>
-                <p class="bg-primary text-white p-3">x ≡ {{x}} (mod {{mTotal}}) </p>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
