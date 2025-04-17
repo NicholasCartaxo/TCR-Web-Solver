@@ -13,10 +13,11 @@
     <div id="alertModal" class="modal">
         <div class="modal-box">
           <h2>⚠️ Aviso</h2>
-          <p>Você não pode remover a última equação!</p>
+          <p id="mensagem-modal">Mensagem de erro</p> <!-- ← AQUI -->
           <button id="closeAlertBtn" class="btn">Ok</button>
         </div>
-      </div>
+    </div>
+
     <div class="container-box">
         <h1 id = "titulo">TCR-Web-Solver</h1>
         <div id="barra-colorida">
@@ -26,7 +27,7 @@
         </div>
         
         <div class="conteudo">
-            <form method="POST" action="/calcular">
+            <form id="form">
                 <div class="d-flex flex-column" id="equacoes-container">
                     <div class="d-flex justify-content-center">
                         <div class="row">

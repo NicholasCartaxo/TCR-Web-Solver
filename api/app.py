@@ -15,14 +15,14 @@ def calcular():
 
     for i in range(len(valores1)):
         if not valores1[i].isnumeric() or not valores2[i].isnumeric() or not modulos[i].isnumeric():
-            return "Entrada(s) não numérica(s)"
+            return "Entrada(s) não numérica(s)", 400
 
 
     valoresParaCalculo = [[int(valores1[i]),int(valores2[i]),int(modulos[i])] for i in range(len(valores1))]
 
     resultado = solveTCR(valoresParaCalculo)
     if type(resultado) is str:
-        return resultado
+        return resultado, 400
     
     mTotal,x,resultados = resultado
 
@@ -30,7 +30,7 @@ def calcular():
     resultadoFormatado = f"x = {x} mod {mTotal}<br>" + s
     print(valoresParaCalculo)
     print(resultados)
-    return render_template('resultado.html', mTotal=mTotal, x=x, resultados = resultados, equacoes = valoresParaCalculo)
+    return render_template('resultado.html', mTotal=mTotal, x=x, resultados = resultados, equacoes = valoresParaCalculo), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

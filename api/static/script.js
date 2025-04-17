@@ -33,7 +33,7 @@ function removerUltimaEquacao() {
     if (equacoes.length > 0) {
         container.removeChild(equacoes[equacoes.length - 1]);
     } else {
-        alertModal.style.display = "flex";
+      mostrarModal("Você não pode remover a última equação");
     }
 }
 
@@ -47,3 +47,52 @@ window.onclick = (e) => {
     alertModal.style.display = "none";
   }
 };
+
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault(); // Impede o envio tradicional
+
+  const formData = new FormData(this);
+
+  fetch("/calcular", {
+      method: "POST",
+      body: formData
+  })
+  .then(async response => {
+      const contentType = response.headers.get("Content-Type") || "";
+      const body = await response.text();
+
+      if (!response.ok) {
+          mostrarModal(body);  // ← Mostra erro no modal (string vinda do back)
+      } else {
+          // Se sucesso, substitui o conteúdo da página inteira com o HTML de resultado
+          const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/calcular";
+
+            for (const [key, value] of formData.entries()) {
+              const input = document.createElement("input");
+              input.type = "hidden";
+              input.name = key;
+              input.value = value;
+              form.appendChild(input);
+          }
+
+          document.body.appendChild(form);
+          form.submit(); // envia de verdade
+      }
+  })
+  .catch(err => {
+      mostrarModal("Erro de rede ou inesperado no servidor.");
+      console.error(err);
+  });
+});
+
+function mostrarModal(msg) {
+  const modal = document.getElementById("alertModal");
+  document.getElementById("mensagem-modal").innerHTML = msg;
+  modal.style.display = "flex";
+
+  document.getElementById("closeAlertBtn").onclick = () => {
+      modal.style.display = "none";
+  };
+}
